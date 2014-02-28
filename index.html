@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Jenesis : Distributed Unit Testing Foundation" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Jenesis</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/jenesis">View on GitHub</a>
+
+          <h1 id="project_title">Jenesis</h1>
+          <h2 id="project_tagline">Distributed Unit Testing Foundation</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="jenesis" class="anchor" href="#jenesis"><span class="octicon octicon-link"></span></a>Jenesis</h1>
+
+<h2>
+<a name="distributed-unit-testing-foundation" class="anchor" href="#distributed-unit-testing-foundation"><span class="octicon octicon-link"></span></a>Distributed Unit Testing Foundation</h2>
+
+<h3>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h3>
+
+<h4>
+<a name="possible-meanings-to-you" class="anchor" href="#possible-meanings-to-you"><span class="octicon octicon-link"></span></a>Possible Meanings to You</h4>
+
+<ul>
+<li>Running multiple unit tests in parallel on multiple hosts / JVMs / OS'</li>
+<li>Running the same unit test in parallel on multiple hosts / JVMs / OS'</li>
+<li>Running a multi-node unit test on multiple hosts / JVMs</li>
+<li>Benchmarking the same unit test in parallel on multiple hosts / JVMs / OS'</li>
+</ul><h4>
+<a name="use-cases-for-above-meanings" class="anchor" href="#use-cases-for-above-meanings"><span class="octicon octicon-link"></span></a>Use cases for above Meanings</h4>
+
+<ul>
+<li>Speed up of huge test suites by parallelizing execution of the tests</li>
+<li>Stress- and / or Load-testing</li>
+<li>Testing distributed / scalable applications</li>
+<li>Testing cluster solutions</li>
+</ul><h4>
+<a name="disclaimer" class="anchor" href="#disclaimer"><span class="octicon octicon-link"></span></a>Disclaimer</h4>
+
+<p>This project is not sponsored or started by nor affiliated to Hazelcast, Inc in any possible way.
+It is a personal, spare-time project started to prevent people from always reinventing the wheel
+as we currently do again at Hazelcast, because there is not yet a solution to be ready-to-use.</p>
+
+<h3>
+<a name="about-this-proposal" class="anchor" href="#about-this-proposal"><span class="octicon octicon-link"></span></a>About this Proposal</h3>
+
+<h4>
+<a name="mailing-list" class="anchor" href="#mailing-list"><span class="octicon octicon-link"></span></a>Mailing List</h4>
+
+<p>Please find the Google Groups for Jenesis <a href="https://groups.google.com/forum/#!forum/jenesis-dev">here</a>.</p>
+
+<h4>
+<a name="goals" class="anchor" href="#goals"><span class="octicon octicon-link"></span></a>Goals</h4>
+
+<p>Jenesis is meant to be a foundation for application or framework vendors to provide a solution for
+distributed unit tests. It will not be limited to be used with a single framework underneath but
+to provide a common API that is extensible to the vendors needs.
+It'll provides a common lifecycle for those tests and an API to hook in your own lifecycle extensions 
+that need to take place to set up, execute and tear down tests or tested applications or frameworks.
+This is very much what the Maven plugin concept looks like. A lifecycle is a basic set of phases and
+the vendor can extend phases to add additional functionality like adding special dependencies or
+adding virtual machines to be started up before running tests.</p>
+
+<p>It will also provide a transparent communication layer where you can integrate special serialization
+strategies and to communicate between the test runner and the remote test agents. This layer is meant
+to be immune to network failures and my communicate on a different network to the general tests.</p>
+
+<p>The current approach is to integrate it with JUnit but possibly TestNG or other frameworks are added
+in the future.</p>
+
+<h4>
+<a name="non-goals" class="anchor" href="#non-goals"><span class="octicon octicon-link"></span></a>Non Goals</h4>
+
+<p>At the moment the goal is not to build a solution to speed up tests by running standard JUnit tests
+in parallel on multiple test slaves. There are interesting / working solutions for that already
+(like <a href="http://test-load-balancer.github.io">Test Load-Balancer TLB</a>) but it might be possible to
+implement those features on top of the goals of this proposal.</p>
+
+<h4>
+<a name="motivation" class="anchor" href="#motivation"><span class="octicon octicon-link"></span></a>Motivation</h4>
+
+<p>A lot of middleware / application frameworks provide support for running distributed unit tests
+but there are mostly no frameworks for a general purpose or they seem to have stopped development
+a long time ago.
+To provide developers and vendors to build reliable but distributed unit tests and applications.</p>
+
+<p>Even if foundation itself is depending on JUnit and is build on Java there are lots of other JVM
+based languages that can be used to write tests or if you have an external system but a Java client
+you'll be able to build stress tests on top of those solutions.</p>
+
+<h4>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h4>
+
+<p>As the license of the contributed sourcecode the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2</a>
+is chosen. This means that all code base is permitted to be used in closed source applications and 
+can be bundled with those, too. In addition to that it also is possible to mix it up with other 
+licenses, open and closed source ones.</p>
+
+<p>For documentation a suitable license will be chosen from the Creative Commons licenses. A possible
+candidate would be: <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+I permits commercial usage and distributing changed documentations but does not prevent relicensing.
+This is pretty much the same terms as AL2 for software but I'm free for suggestions on documentation
+licensing :-)</p>
+
+<h4>
+<a name="project-name" class="anchor" href="#project-name"><span class="octicon octicon-link"></span></a>Project name</h4>
+
+<p>Jenesis is a pun of the "Tree of Life" from the "Book of Genesis" and the typical Java J-beginning
+project names. The "tree of life" is common a symbol for knowledge but as a tree it also stands for
+stableness (stability) and a long life.</p>
+
+<p>Additionally if a tree grows more branches will come up and so goes to any application. Those branches
+need to be tested and for a distributed or scalable application it means the bigger it get over time,
+by acquiring the more users for example, the more nodes you eventually will have. Even those needs to
+be tested to make sure scaling works for your case and here we are on Jenesis again.</p>
+
+<h4>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>Description</h4>
+
+<p>This is a fast written, mindmap-alike list of thoughts / ideas. At the moment this is not meant to
+be complete or all those things have to be implemented.</p>
+
+<ul>
+<li>Support for fork-strategies (local, remote, cloud, custom)</li>
+<li>Support to shutdown processes gracefully and sigkill them ungracefully</li>
+<li>Transparent communication between test runner and workers</li>
+<li>Support for hooking into different phases and extend the base framework</li>
+<li>Executing remote actions and waiting for events to happen</li>
+<li>Support for timeouts</li>
+<li>Support for JVM settings and changing these settings from JVM to JVM</li>
+<li>Support for repeatable runs of the same test</li>
+<li>Support for multiple operating systems (for native operations)</li>
+<li>Automatic building of classpath</li>
+<li>Support for distributing required files to worker nodes</li>
+<li>Resolving artifacts from Maven repositories</li>
+<li>Packaging API to wrap classes / dependencies in custom packages</li>
+<li>Some kind of remote classloading</li>
+<li>Piping console / logger output to file / test runner console / null</li>
+</ul><h4>
+<a name="status" class="anchor" href="#status"><span class="octicon octicon-link"></span></a>Status?</h4>
+
+<p>I started an implementation a few days ago and all basic ideas seem to work. The "prototype" is
+an implementation to distribute Hazelcast tests on multiple JVMs but currently only on the local
+machine of the test runner. It forks out JVMs, make them building a cluster and executes cluster
+operations on those cluster nodes.</p>
+
+<p>The idea was to have a small version of our heartattack solution and to eventually integrate both
+but eventually it will be another highly vendor integrated solution. At Hazelcast we are currently
+going this way because we need to have those tests now.</p>
+
+<p>For a more general purpose I want to start this project to give other the chance to benefit from
+this. That means there is not yet any sourcecode to share on this project since I want to find out
+if there is any interest in such a project or not.</p>
+
+<h3>
+<a name="you-want-to-contribute" class="anchor" href="#you-want-to-contribute"><span class="octicon octicon-link"></span></a>You want to contribute?</h3>
+
+<p>Due to the fact it's not cool to make those kind of projects alone and since there are a lot of
+different requirements I'm looking for people that want to help and work on this together.</p>
+
+<p>To start you can contribute by adding ideas, requirements, recommendations as a ticket to the Github
+issue tracker, you can also contribute by adding code via Pull Requests.
+In addition to that there is a mailing list (Google Group) which can be found 
+<a href="https://groups.google.com/forum/#!forum/jenesis-dev">here</a>.
+Even commit rights to this repository may be granted for highly interested people.</p>
+
+<p>Let's do this together! If you want to contact me you can do this via Twitter 
+<a href="https://twitter.com/noctarius2k">@noctarius2k</a> or using the mail address me[at]noctariusDOTcom.
+You can also either add your name to this <a href="https://github.com/noctarius/jenesis/issues/1">ticket</a>
+or editing the <a href="https://github.com/noctarius/jenesis/wiki">wiki</a>.</p>
+
+<h3>
+<a name="api-ideas" class="anchor" href="#api-ideas"><span class="octicon octicon-link"></span></a>API ideas</h3>
+
+<p>This API is not meant to be a fully thought-through thing it is more like a basic idea on how such
+stuff could look like:</p>
+
+<div class="highlight highlight-java"><pre><span class="nd">@RemoteAgent</span><span class="o">(</span><span class="n">agentClass</span> <span class="o">=</span> <span class="n">LoggingRemoteAgent</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DistributedExmapleTestCase</span> <span class="o">{</span>
+
+   <span class="nd">@Test</span><span class="o">(</span><span class="n">timeout</span> <span class="o">=</span> <span class="mi">60000</span><span class="o">)</span>
+   <span class="nd">@RemoteTest</span><span class="o">(</span><span class="n">initialForks</span> <span class="o">=</span> <span class="mi">5</span><span class="o">,</span> <span class="n">identification</span> <span class="o">=</span> <span class="s">"Node-${forkId}"</span><span class="o">)</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testDistributed</span><span class="o">(</span><span class="n">RemoteContext</span> <span class="n">remoteContext</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// Using defaults from this JVM</span>
+      <span class="n">RemoteProcess</span> <span class="n">remoteProcess</span> <span class="o">=</span> <span class="n">remoteContext</span><span class="o">.</span><span class="na">forkProcess</span><span class="o">();</span>
+      <span class="n">remoteProcess</span><span class="o">.</span><span class="na">waitForStartup</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
+
+      <span class="c1">// To all processes</span>
+      <span class="n">remoteContext</span><span class="o">.</span><span class="na">sendAction</span><span class="o">(</span><span class="k">new</span> <span class="n">SomeRemoteAction</span><span class="o">(),</span> <span class="mi">10</span><span class="o">);</span>
+
+      <span class="c1">// Kill hard</span>
+      <span class="n">remoteProcess</span><span class="o">.</span><span class="na">sigkill</span><span class="o">();</span>
+
+      <span class="c1">// ...</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SomeRemoteAction</span> <span class="kd">extends</span> <span class="n">SynchronousRemoteAction</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="n">Void</span> <span class="nf">evaluate</span><span class="o">(</span><span class="n">CommandContext</span> <span class="n">commandContext</span><span class="o">)</span> 
+            <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+
+      <span class="n">Object</span><span class="o">[]</span> <span class="n">arguments</span> <span class="o">=</span> <span class="n">commandContext</span><span class="o">.</span><span class="na">getArguments</span><span class="o">();</span>
+      <span class="kt">int</span> <span class="n">seconds</span> <span class="o">=</span> <span class="o">(</span><span class="n">Integer</span><span class="o">)</span> <span class="n">arguments</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Waiting "</span><span class="o">);</span>
+      <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">seconds</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"."</span><span class="o">);</span>
+         <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">" done."</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoggingRemoteAgent</span> <span class="kd">extends</span> <span class="n">RemoteAgent</span> <span class="o">{</span>
+
+   <span class="kd">private</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(...);</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">preparationPhase</span><span class="o">(</span><span class="n">ExecutionContext</span> <span class="n">executionContext</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Preparation phase started: "</span>
+            <span class="o">+</span> <span class="n">executionContext</span><span class="o">.</span><span class="na">getIdentification</span><span class="o">());</span>
+      <span class="kd">super</span><span class="o">.</span><span class="na">preparationPhase</span><span class="o">(</span><span class="n">executionContext</span><span class="o">);</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Dependency</span><span class="o">&gt;</span> <span class="nf">resolveDependencyPhase</span><span class="o">(</span>
+            <span class="n">ExecutionContext</span> <span class="n">executionContext</span><span class="o">)</span> <span class="o">{</span>
+
+      <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Resolving dependencies: "</span> 
+            <span class="o">+</span> <span class="n">executionContext</span><span class="o">.</span><span class="na">getIdentification</span><span class="o">());</span>
+      <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">resolveDependencyPhase</span><span class="o">(</span><span class="n">executionContext</span><span class="o">);</span>
+   <span class="o">}</span>
+
+   <span class="c1">// ... further phases</span>
+<span class="o">}</span>
+</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
