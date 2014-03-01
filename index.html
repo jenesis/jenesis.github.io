@@ -11,23 +11,23 @@
     <title>Jenesis</title>
   </head>
 
-  <body>
+  <body marginwidth="0" marginheight="0" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; padding: 0;">
+    <a href="https://github.com/jenesis/jenesis"><img style="position: absolute; top: 0; right: 0; border: 0; padding: 0px; margin: 0px; box-shadow: none; -webkit-box-shadow: none;" src="https://github-camo.global.ssl.fastly.net/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
 
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/jenesis/jenesis">View on GitHub</a>
-
           <h1 id="project_title">Jenesis</h1>
           <h2 id="project_tagline">Distributed Unit Testing Foundation</h2>
 	      <span><a href="https://twitter.com/javajenesis" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @javajenesis</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></span>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></span>&nbsp;&nbsp;
+        <a href="https://groups.google.com/forum/#!forum/jenesis-dev" title="Jenesis Google Groups" style="border: #ccc solid 1px; border-radius: 4px; background-color: #eee; background-image: linear-gradient(#fff,#dedede); text-align: center; width: 185px; display: inline-block; vertical-align: top; outline: none; text-decoration: none; "><img src="images/googlegroups.png" style="margin: 0px; padding: 0px; border: none; box-shadow: none; -webkit-box-shadow: none; vertical-align:middle;"/> <span class="label" style="color: #333; text-shadow: 0 1px 0 rgba(255,255,255,.5); font-weight: bold; cursor: pointer; font: bold bold bold 11px/18px 'Helvetica Neue',Arial,sans-serif; font-size: 13px; line-height: 26px;">Join the Google Groups</span></a>
         </header>
     </div>
 
     <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+    <div id="main_content_wrap" class="outer" style="padding: 10px 0px 10px 0px;">
+      <section id="main_content" class="inner" style="background-color: #FFFFFF; padding: 20px 40px 40px 50px; border-radius: 15px; border-radius: 15px;">
         <h2>Project Proposal</h2>
 <h3>
 <a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h3>
@@ -189,7 +189,7 @@ or editing the <a href="https://github.com/noctarius/jenesis/wiki">wiki</a>.</p>
 <p>This API is not meant to be a fully thought-through thing it is more like a basic idea on how such
 stuff could look like:</p>
 
-<div class="highlight highlight-java"><pre><span class="nd">@RemoteAgent</span><span class="o">(</span><span class="n">agentClass</span> <span class="o">=</span> <span class="n">LoggingRemoteAgent</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<div class="highlight highlight-java"><pre style="box-shadow: none;"><span class="nd">@RemoteAgent</span><span class="o">(</span><span class="n">agentClass</span> <span class="o">=</span> <span class="n">LoggingRemoteAgent</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">DistributedExmapleTestCase</span> <span class="o">{</span>
 
    <span class="nd">@Test</span><span class="o">(</span><span class="n">timeout</span> <span class="o">=</span> <span class="mi">60000</span><span class="o">)</span>
